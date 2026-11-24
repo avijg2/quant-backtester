@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quant-backtester"
+version = "0.1.0"
+description = "A clean, no-lookahead vectorized backtesting engine for quantitative finance research"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "avijg2"}]
+keywords = ["quant", "finance", "backtesting", "trading", "statistics"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "yfinance>=0.2",
+    "statsmodels>=0.14",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+quant-backtest = "quant_backtester.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
